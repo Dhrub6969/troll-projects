@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 60%;
+            margin-top: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>I can read your mind</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="userGuess" placeholder="Enter your guess" min="1" max="100">
+    <button onclick="checkGuess()">Guess</button>
+    <p class="message" id="message"></p>
+    <button onclick="restartGame()" id="restartButton" style="display:none;">Restart Game</button>
+</div>
+
+<script>
+    let randomNumber;
+    let attempts;
+
+    function startGame() {
+        document.getElementById('message').textContent = '';
+        document.getElementById('userGuess').value = '';
+        document.getElementById('restartButton').style.display = 'none';
+    }
+
+    function checkGuess() {
+        const userGuess = parseInt(document.getElementById('userGuess').value);
+        document.getElementById('message').textContent = `you guessed ${userGuess}`;
+        document.getElementById('restartButton').style.display = 'block';
+
+    }    
+
+    function restartGame() {
+        startGame();
+        document.getElementById('restartButton').style.display = 'none';
+    }
+
+    // Start a new game when the page loads
+    startGame();
+</script>
+
+</body>
+</html>
